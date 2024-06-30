@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:sofia_portfolio/core/app_router.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const PortfolioWebApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class PortfolioWebApp extends StatelessWidget {
+  const PortfolioWebApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(scaffoldBackgroundColor: Colors.black),
+      themeMode: ThemeMode.dark,
+      title: 'Sofia Portfolio',
+      routerConfig: router,
     );
   }
 }
