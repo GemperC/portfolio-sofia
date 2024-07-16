@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sofia_portfolio/core/theme/typography.dart';
 import 'package:sofia_portfolio/src/ui/widgets/hover_image.dart';
+import 'package:sofia_portfolio/src/ui/widgets/social_media_line.dart';
 import 'package:sofia_portfolio/src/ui/widgets/spacer.dart';
 import 'package:sofia_portfolio/src/utils/screen_size.dart';
 
@@ -15,106 +18,79 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size.width);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              _header(),
-              _tiles(),
-              spacerH(200),
-              _footer(),
-              _footerLine()
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                _header(),
+                _tiles(),
+                spacerH(200),
+                _footer(),
+                SocialMedialine(),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  _socialMediaRow() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        _socialMediaButton('Instagram', 'https://www.instagram.com/sofia/'),
-        spacerW(20),
-        _socialMediaButton('Twitter', 'https://twitter.com/sofia/'),
-        spacerW(20),
-        _socialMediaButton('LinkedIn', 'https://www.linkedin.com/in/sofia/'),
-      ],
-    );
-  }
-
-  _socialMediaButton(String name, String url) {
-    return GestureDetector(
-      onTap: () {
-        print('Navigating to $url');
-        // GoRouter.of(context).go(url);
-      },
-      child: Container(
-        padding: EdgeInsets.all(10),
-        child: Row(
-          children: <Widget>[
-            Text(name, style: AppTypography.homeFooter2),
-            spacerW(10),
-            Icon(Icons.arrow_outward_rounded, color: Colors.white)
-          ],
-        ),
-      ),
-    );
-  }
-
-  _footerLine() {
-    return Row(
-      children: [
-        Text("SOFIAMAINA.ARTTM", style: AppTypography.homeFooter2),
-        spaceTaker(),
-        _socialMediaRow(),
-      ],
-    );
-  }
-
   _header() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Image.asset('home/main.png',
-            width: MediaQuery.of(context).size.width * 0.3),
-        Text(
-          'Join me on A journey\ninto the Unseen.'.toUpperCase(),
-          style: AppTypography.homeHeader,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 100.0, bottom: 80),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset('home/main.png', width: 150),
+          Text(
+            'Join me on A journey\ninto the Unseen.'.toUpperCase(),
+            style: AppTypography.homeHeader,
+          ),
+        ],
+      ),
     );
   }
 
   _footer() {
     return Container(
-      height: 500,
+      color: Colors.black,
+      height: 460,
+      width: 500,
       child: Stack(
+        alignment: Alignment.center,
         children: [
           RotatedBox(
             quarterTurns: 1,
             child: Align(
               alignment: Alignment(1, -1),
-              child: Image.asset('home/catapilar.png',
-                  width: MediaQuery.of(context).size.width * 0.3),
+              child: Image.asset('home/catapilar.png', width: 160),
             ),
           ),
           Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'embark on a journey of discovery, seeing the world through a fresh, imaginative lens.'
+                'embark on a journey of\ndiscovery, seeing the\nworld through a fresh,\nimaginative lens.'
                     .toUpperCase(),
                 style: AppTypography.homeFooter1,
               ),
-              Text(
-                'By highlighting the unexpected and fantastical elements in nature,\nI aim to create immersive experiences that resonate both\nemotionally and intellectually. ',
-                style: AppTypography.homeFooter2,
+              spacerH(20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                child: Text(
+                  'By highlighting the unexpected and fantastical elements in nature,\nI aim to create immersive experiences that resonate both\nemotionally and intellectually. ',
+                  style: AppTypography.homeFooter2,
+                ),
               ),
-              spacerH(200),
             ],
           ),
         ],
@@ -131,99 +107,66 @@ class _MainPageState extends State<MainPage> {
           _tile('sketchbook', 'Art projects created\nusing Procreate.',
               'home/sketchbook.png', '/sketchbook'),
           spacerH(50),
-          _tileReverse('photography', 'Shot on iphone 11',
-              'home/photography.png', '/photography'),
+          _tile('photography', 'Shot on iphone 11', 'home/photography.png',
+              '/photography',
+              isReverse: true),
           spacerH(50),
           _tile('digital Art', 'Art projects created\nusing Procreate.',
-              'home/digital_art.png', '/digital_art'),
+              'home/digital_art.png', '/digital-art'),
           spacerH(50),
-          _tileReverse('Me & You', 'Completed\nclient projects',
-              'home/meandu.png', '/meandu'),
+          _tile('Me & You', 'Completed\nclient projects', 'home/meandu.png',
+              '/meandu',
+              isReverse: true),
         ],
       ),
     );
   }
 
-  _tile(String title, String description, String imagePath, String routePath) {
+  _tile(String title, String description, String imagePath, String routePath,
+      {bool isReverse = false}) {
+    final widgets = <Widget>[
+      _tileText(title, description, isReverse),
+      spacerW(40),
+      HoverImage(imagePath: imagePath, size: 150),
+    ];
     return GestureDetector(
       onTap: () {
         print('Navigating to $routePath');
-        // GoRouter.of(context).go(routePath);
+        GoRouter.of(context).go(routePath);
       },
       child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            _tileText(title, description),
-            spacerW(30),
-            HoverImage(imagePath: imagePath),
-          ],
+          children: isReverse ? widgets.reversed.toList() : widgets,
         ),
       ),
     );
   }
 
-  _tileReverse(
-      String title, String description, String imagePath, String routePath) {
-    return GestureDetector(
-      onTap: () {
-        print('Navigating to $routePath');
-        // GoRouter.of(context).go(routePath);
-      },
-      child: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+  Widget _tileText(String title, String description, bool isReverse) {
+    final widgets = [
+      Text(
+        title.toUpperCase(),
+        style: AppTypography.homeTile1,
+      ),
+      spacerW(6),
+      Icon(isReverse ? Icons.arrow_back : Icons.arrow_forward,
+          color: Colors.white)
+    ];
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment:
+          isReverse ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            HoverImage(imagePath: imagePath),
-            _tileTextReverse(title, description),
-            spacerW(80),
-          ],
+          children: isReverse ? widgets.reversed.toList() : widgets,
         ),
-      ),
-    );
-  }
-
-  Padding _tileText(String title, String description) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 40.0),
-      child: Column(
-        children: [
-          Row(
-            children: <Widget>[
-              Text(
-                title.toUpperCase(),
-                style: AppTypography.homeTile1,
-              ),
-              spacerW(6),
-              Icon(Icons.arrow_forward, color: Colors.white)
-            ],
-          ),
-          Text(description, style: AppTypography.homeTile2),
-        ],
-      ),
-    );
-  }
-
-  Padding _tileTextReverse(String title, String description) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 40.0),
-      child: Column(
-        children: [
-          Row(
-            children: <Widget>[
-              Icon(Icons.arrow_back, color: Colors.white),
-              spacerW(6),
-              Text(
-                title.toUpperCase(),
-                style: AppTypography.homeTile1,
-              ),
-            ],
-          ),
-          Text(description, style: AppTypography.homeTile2),
-        ],
-      ),
+        Text(description,
+            style: AppTypography.homeTile2, textAlign: TextAlign.start),
+      ],
     );
   }
 }
