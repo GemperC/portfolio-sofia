@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Image.asset(
-            'home/main.png',
+            'assets/home/main.png',
             width: ScreenInfo(context).scaler(150),
           ),
           Text(
