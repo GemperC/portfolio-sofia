@@ -20,6 +20,7 @@ class CustomPageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(context.width);
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -28,7 +29,7 @@ class CustomPageWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               CustomBackButton(),
-              _header(),
+              _header(context),
               body ?? _image(context),
               spacerH(200),
               SocialMedialine(),
@@ -39,7 +40,7 @@ class CustomPageWidget extends StatelessWidget {
     );
   }
 
-  _header() {
+  _header(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 100.0),
       child: Column(
@@ -49,7 +50,8 @@ class CustomPageWidget extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 70.0),
             child: Text(
               title.toUpperCase(),
-              style: AppTypography.homeHeader,
+              style: AppTypography.homeHeader
+                  .copyWith(fontSize: 20.scaler(context)),
             ),
           ),
           // RotatedBox(
@@ -61,7 +63,8 @@ class CustomPageWidget extends StatelessWidget {
     );
   }
 
-  _image(BuildContext contex) {
-    return Image.asset(assetPath!, width: contex.width);
+  _image(BuildContext c) {
+    return Image.asset(assetPath!,
+        width: ScreenInfo(c).scaler(500, limit: 1000));
   }
 }

@@ -14,6 +14,7 @@ class SocialMedialine extends StatelessWidget {
         Text("☻@SOFIAXIMA.ART", style: AppTypography.socialMediaLine),
         spaceTaker(),
         _socialMediaLine(),
+        spacerH(60),
       ],
     );
   }

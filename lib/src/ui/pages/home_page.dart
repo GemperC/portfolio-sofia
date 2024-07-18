@@ -18,7 +18,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.width);
+    print(context.width);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -26,12 +26,9 @@ class _MainPageState extends State<MainPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 _header(),
                 _tiles(),
-                spacerH(200),
                 _footer(),
                 SocialMedialine(),
               ],
@@ -48,10 +45,15 @@ class _MainPageState extends State<MainPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.asset('home/main.png', width: 150),
+          Image.asset(
+            'home/main.png',
+            width: ScreenInfo(context).scaler(150),
+          ),
           Text(
             'Join me on A journey\ninto the Unseen.'.toUpperCase(),
-            style: AppTypography.homeHeader,
+            style: AppTypography.homeHeader.copyWith(
+              fontSize: ScreenInfo(context).scaler(20),
+            ),
           ),
         ],
       ),
@@ -61,17 +63,19 @@ class _MainPageState extends State<MainPage> {
   _footer() {
     return Container(
       color: Colors.black,
-      height: 460,
-      width: 500,
+      height: 460.scaler(context),
+      width: 500.scaler(context),
       child: Stack(
         alignment: Alignment.center,
         children: [
           RotatedBox(
             quarterTurns: 1,
             child: Align(
-              alignment: Alignment(1, -1),
-              child: Image.asset('home/catapilar.png', width: 160),
-            ),
+                alignment: Alignment(1, -1),
+                child: Image.asset(
+                  'home/catapilar.png',
+                  width: ScreenInfo(context).scaler(160),
+                )),
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
@@ -81,14 +85,18 @@ class _MainPageState extends State<MainPage> {
               Text(
                 'embark on a journey of\ndiscovery, seeing the\nworld through a fresh,\nimaginative lens.'
                     .toUpperCase(),
-                style: AppTypography.homeFooter1,
+                style: AppTypography.homeFooter1.copyWith(
+                  fontSize: ScreenInfo(context).scaler(30),
+                ),
               ),
               spacerH(20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 0.0),
                 child: Text(
                   'By highlighting the unexpected and fantastical elements in nature,\nI aim to create immersive experiences that resonate both\nemotionally and intellectually. ',
-                  style: AppTypography.homeFooter2,
+                  style: AppTypography.homeFooter2.copyWith(
+                    fontSize: ScreenInfo(context).scaler(14),
+                  ),
                 ),
               ),
             ],
@@ -101,8 +109,6 @@ class _MainPageState extends State<MainPage> {
   _tiles() {
     return Container(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           _tile('sketchbook', 'Art projects created\nusing Procreate.',
               'home/sketchbook.png', '/sketchbook'),
@@ -127,7 +133,7 @@ class _MainPageState extends State<MainPage> {
     final widgets = <Widget>[
       _tileText(title, description, isReverse),
       spacerW(40),
-      HoverImage(imagePath: imagePath, size: 150),
+      HoverImage(imagePath: imagePath, size: ScreenInfo(context).scaler(150)),
     ];
     return GestureDetector(
       onTap: () {
@@ -148,11 +154,13 @@ class _MainPageState extends State<MainPage> {
     final widgets = [
       Text(
         title.toUpperCase(),
-        style: AppTypography.homeTile1,
+        style: AppTypography.homeTile1.copyWith(
+          fontSize: ScreenInfo(context).scaler(15),
+        ),
       ),
       spacerW(6),
       Icon(isReverse ? Icons.arrow_back : Icons.arrow_forward,
-          color: Colors.white)
+          color: Colors.white, size: ScreenInfo(context).scaler(20))
     ];
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -165,7 +173,9 @@ class _MainPageState extends State<MainPage> {
           children: isReverse ? widgets.reversed.toList() : widgets,
         ),
         Text(description,
-            style: AppTypography.homeTile2, textAlign: TextAlign.start),
+            style: AppTypography.homeTile2
+                .copyWith(fontSize: ScreenInfo(context).scaler(12)),
+            textAlign: TextAlign.start),
       ],
     );
   }

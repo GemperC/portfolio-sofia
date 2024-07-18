@@ -19,6 +19,8 @@ class SketchboookPage extends StatefulWidget {
 class _SketchboookPageState extends State<SketchboookPage> {
   @override
   Widget build(BuildContext context) {
+    print(context.width);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -100,12 +102,13 @@ class _SketchboookPageState extends State<SketchboookPage> {
             padding: const EdgeInsets.only(bottom: 20.0),
             child: Text(
               'sketchbook'.toUpperCase(),
-              style: AppTypography.homeHeader,
+              style: AppTypography.homeHeader
+                  .copyWith(fontSize: 20.scaler(context)),
             ),
           ),
           RotatedBox(
             quarterTurns: 1,
-            child: Image.asset('home/catapilar.png', width: 60),
+            child: Image.asset('home/catapilar.png', width: 60.scaler(context)),
           ),
         ],
       ),
@@ -146,7 +149,7 @@ class _SketchboookPageState extends State<SketchboookPage> {
 
   _image() {
     return Image.asset('sketchbook/sketchbook.png',
-        width: MediaQuery.of(context).size.width * 0.8);
+        width: ScreenInfo(context).scaler(400, limit: 1600));
   }
 
   _tile(String title, String description, String imagePath, String routePath,
