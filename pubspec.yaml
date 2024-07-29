@@ -23,3 +23,18 @@ flutter:
 
   assets:
     - assets/
+    - assets/sketchbook_home.png
+    - assets/sketchbook.png
+    - assets/photography.png
+    - assets/human_thumb.png
+    - assets/flora_thumb.png
+    - assets/human.png
+    - assets/flora.png
+    - assets/1.png
+    - assets/2.png
+    - assets/digital_art_home.png
+    - assets/digital_art.png
+    - assets/meandu_home.png
+    - assets/meandu.png
+    - assets/catapilar.png
+    - assets/icon.png

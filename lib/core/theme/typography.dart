@@ -13,7 +13,8 @@ abstract class AppTypography {
     fontSize: 30,
     height: 1.2,
     fontWeight: FontWeight.w600,
-  );
+    
+);
   static final homeFooter2 = GoogleFonts.robotoCondensed(
       color: Colors.white,
       fontSize: 14,

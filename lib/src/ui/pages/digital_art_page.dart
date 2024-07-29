@@ -17,7 +17,7 @@ class DigitalArtPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPageWidget(
         title: "Digital art",
-        assetPath: "digital_art/digital_art.png",
+        assetPath: "assets/digital_art.png",
         routePath: "/digital-art");
   }
 }

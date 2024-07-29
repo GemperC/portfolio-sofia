@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:sofia_portfolio/src/utils/screen_size.dart';
 
 class HoverImage extends StatefulWidget {
   final String imagePath;
   final double size;
-  double? hoverSize;
+  final double? hoverSize;
+  final VoidCallback? onTap;
 
-  HoverImage({required this.imagePath, this.size = 0.4, this.hoverSize});
+  HoverImage({
+    required this.imagePath,
+    this.size = 0.4,
+    this.hoverSize,
+    this.onTap,
+  });
 
   @override
   _HoverImageState createState() => _HoverImageState();
@@ -17,20 +22,30 @@ class _HoverImageState extends State<HoverImage> {
 
   @override
   Widget build(BuildContext context) {
-    widget.hoverSize = widget.size + widget.size / 10;
+    final hoverSize = widget.hoverSize ?? widget.size + widget.size / 10;
 
-    return MouseRegion(
-      onEnter: (_) => _onHover(true),
-      onExit: (_) => _onHover(false),
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 120),
-        width: _isHovered ? widget.hoverSize : widget.size,
-        height: _isHovered ? widget.hoverSize : widget.size,
-        child: ColorFiltered(
-          colorFilter: _isHovered
-              ? ColorFilter.mode(Colors.transparent, BlendMode.multiply)
-              : ColorFilter.matrix(_greyscaleMatrix),
-          child: Image.asset(widget.imagePath),
+    return GestureDetector(
+      onTapDown: (_) => _onHover(true),
+      onTapUp: (_) {
+        _onHover(false);
+        if (widget.onTap != null) {
+          widget.onTap!();
+        }
+      },
+      onTapCancel: () => _onHover(false),
+      child: MouseRegion(
+        onEnter: (_) => _onHover(true),
+        onExit: (_) => _onHover(false),
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 120),
+          width: _isHovered ? hoverSize : widget.size,
+          height: _isHovered ? hoverSize : widget.size,
+          child: ColorFiltered(
+            colorFilter: _isHovered
+                ? ColorFilter.mode(Colors.transparent, BlendMode.multiply)
+                : ColorFilter.matrix(_greyscaleMatrix),
+            child: Image.asset(widget.imagePath, fit: BoxFit.cover),
+          ),
         ),
       ),
     );

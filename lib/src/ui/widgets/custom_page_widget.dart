@@ -22,32 +22,45 @@ class CustomPageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     print(context.width);
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              CustomBackButton(),
-              _header(context),
-              body ?? _image(context),
-              spacerH(200),
-              SocialMedialine(),
-            ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                CustomBackButton(),
+                _header(context),
+                if (title == "Sketchbook") _catapillarImage(context),
+                body ?? _image(context),
+                spacerH(60),
+                SocialMedialine(),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
+  Widget _catapillarImage(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0),
+      child: RotatedBox(
+        quarterTurns: 1,
+        child: Image.asset('assets/catapilar.png', width: 60.scaler(context)),
+      ),
+    );
+  }
+
   _header(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 100.0),
+      padding: const EdgeInsets.only(top: 10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(bottom: 70.0),
+            padding: EdgeInsets.only(bottom: title == "Sketchbook" ? 10 : 70.0),
             child: Text(
               title.toUpperCase(),
               style: AppTypography.homeHeader

@@ -22,7 +22,7 @@ class _MeAndYouPageState extends State<MeAndYouPage> {
   Widget build(BuildContext context) {
     return CustomPageWidget(
         title: "Completed Projects",
-        assetPath: "meandu/meandu.png",
+        assetPath: "assets/meandu.png",
         routePath: "/meandu");
   }
 }

@@ -8,7 +8,7 @@ class HumanPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPageWidget(
         title: "To be human",
-        assetPath: "photography/human/human.png",
+        assetPath: "assets/human.png",
         routePath: "/photography/human");
   }
 }

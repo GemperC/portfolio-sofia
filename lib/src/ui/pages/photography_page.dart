@@ -22,8 +22,7 @@ class _PhotographyPageState extends State<PhotographyPage> {
       title: "Photography",
       routePath: "/photography",
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,14 +30,12 @@ class _PhotographyPageState extends State<PhotographyPage> {
             children: [
               Stack(
                 children: [
-                  GestureDetector(
+                  HoverImage(
+                    imagePath: 'assets/human_thumb.png',
+                    size: ScreenInfo(context).scaler(170, limit: 1000),
                     onTap: () {
                       context.go('/photography/human');
                     },
-                    child: HoverImage(
-                      imagePath: 'photography/human.png',
-                      size: ScreenInfo(context).scaler(200, limit: 1000),
-                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -52,8 +49,8 @@ class _PhotographyPageState extends State<PhotographyPage> {
               ),
               spacerW(10),
               Image.asset(
-                'photography/1.png',
-                height: ScreenInfo(context).scaler(200, limit: 1000),
+                'assets/1.png',
+                height: ScreenInfo(context).scaler(170, limit: 1000),
               ),
             ],
           ),
@@ -63,21 +60,19 @@ class _PhotographyPageState extends State<PhotographyPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'photography/2.png',
-                height: ScreenInfo(context).scaler(200, limit: 1000),
+                'assets/2.png',
+                height: ScreenInfo(context).scaler(170, limit: 1000),
               ),
               spacerW(10),
               Stack(
                 alignment: Alignment.bottomRight,
                 children: [
-                  GestureDetector(
+                  HoverImage(
                     onTap: () {
                       context.go('/photography/flora');
                     },
-                    child: HoverImage(
-                      imagePath: 'photography/flora.png',
-                      size: ScreenInfo(context).scaler(200, limit: 1000),
-                    ),
+                    imagePath: 'assets/flora_thumb.png',
+                    size: ScreenInfo(context).scaler(170, limit: 1000),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),

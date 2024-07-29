@@ -8,7 +8,7 @@ class FloraPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPageWidget(
         title: "flora",
-        assetPath: "photography/flora/flora.png",
+        assetPath: "assets/flora.png",
         routePath: "/photography/flora");
   
   }

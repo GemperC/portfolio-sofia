@@ -14,7 +14,7 @@ class PortfolioWebApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: Colors.black),
       themeMode: ThemeMode.dark,
-      title: 'Sofia Portfolio',
+      title: 'Sofiaxima',
       routerConfig: router,
     );
   }
