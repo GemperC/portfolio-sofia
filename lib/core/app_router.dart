@@ -1,13 +1,13 @@
 // lib/core/config/app_router.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sofia_portfolio/src/ui/pages/digital_art_page.dart';
-import 'package:sofia_portfolio/src/ui/pages/flora_page.dart';
-import 'package:sofia_portfolio/src/ui/pages/home_page.dart';
-import 'package:sofia_portfolio/src/ui/pages/human_page.dart';
-import 'package:sofia_portfolio/src/ui/pages/meandu_page.dart';
-import 'package:sofia_portfolio/src/ui/pages/photography_page.dart';
-import 'package:sofia_portfolio/src/ui/pages/sketchbook_page.dart';
+import 'package:sofiaxima/src/ui/pages/digital_art_page.dart';
+import 'package:sofiaxima/src/ui/pages/flora_page.dart';
+import 'package:sofiaxima/src/ui/pages/home_page.dart';
+import 'package:sofiaxima/src/ui/pages/human_page.dart';
+import 'package:sofiaxima/src/ui/pages/meandu_page.dart';
+import 'package:sofiaxima/src/ui/pages/photography_page.dart';
+import 'package:sofiaxima/src/ui/pages/sketchbook_page.dart';
 // import other pages as needed
 
 final GoRouter router = GoRouter(

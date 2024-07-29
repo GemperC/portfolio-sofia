@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sofia_portfolio/src/ui/pages/photography_page.dart';
+import 'package:sofiaxima/src/ui/pages/photography_page.dart';
 
 abstract class AppTypography {
   static final homeHeader = GoogleFonts.robotoFlex(
@@ -13,8 +13,7 @@ abstract class AppTypography {
     fontSize: 30,
     height: 1.2,
     fontWeight: FontWeight.w600,
-    
-);
+  );
   static final homeFooter2 = GoogleFonts.robotoCondensed(
       color: Colors.white,
       fontSize: 14,

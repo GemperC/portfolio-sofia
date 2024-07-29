@@ -1,3 +1,3 @@
-# sofia_portfolio
+# sofiaxima
 
 A new Flutter project.

@@ -1,4 +1,4 @@
-package com.example.sofia_portfolio
+package com.example.sofiaxima
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sofia_portfolio/core/theme/typography.dart';
-import 'package:sofia_portfolio/src/ui/widgets/spacer.dart';
-import 'package:sofia_portfolio/src/utils/screen_size.dart';
-// import 'dart:html' as html;
+import 'package:sofiaxima/core/theme/typography.dart';
+import 'package:sofiaxima/src/ui/widgets/spacer.dart';
+import 'package:sofiaxima/src/utils/screen_size.dart';
+import 'dart:html' as html;
 
 class SocialMedialine extends StatefulWidget {
   const SocialMedialine({super.key});
@@ -162,9 +162,7 @@ class _SocialMedialineState extends State<SocialMedialine> {
     return GestureDetector(
       onTap: () async {
         print('Navigating to $url');
-        if (!Platform.isAndroid) {
-          // html.window.open(url, 'new tab');
-        }
+        html.window.open(url, 'new tab');
       },
       child: Container(
         color: Colors.black,

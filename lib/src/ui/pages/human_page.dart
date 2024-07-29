@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sofia_portfolio/src/ui/widgets/custom_page_widget.dart';
+import 'package:sofiaxima/src/ui/widgets/custom_page_widget.dart';
 
 class HumanPage extends StatelessWidget {
   const HumanPage({super.key});

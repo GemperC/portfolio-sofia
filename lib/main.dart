@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sofia_portfolio/core/app_router.dart';
+import 'package:sofiaxima/core/app_router.dart';
 
 void main() {
   runApp(const PortfolioWebApp());

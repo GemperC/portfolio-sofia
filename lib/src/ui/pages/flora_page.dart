@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sofia_portfolio/src/ui/widgets/custom_page_widget.dart';
+import 'package:sofiaxima/src/ui/widgets/custom_page_widget.dart';
 
 class FloraPage extends StatelessWidget {
   const FloraPage({super.key});
@@ -10,6 +10,5 @@ class FloraPage extends StatelessWidget {
         title: "flora",
         assetPath: "assets/flora.png",
         routePath: "/photography/flora");
-  
   }
 }

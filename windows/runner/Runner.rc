@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "sofia_portfolio" "\0"
+            VALUE "FileDescription", "sofiaxima" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "sofia_portfolio" "\0"
+            VALUE "InternalName", "sofiaxima" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "sofia_portfolio.exe" "\0"
-            VALUE "ProductName", "sofia_portfolio" "\0"
+            VALUE "OriginalFilename", "sofiaxima.exe" "\0"
+            VALUE "ProductName", "sofiaxima" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
